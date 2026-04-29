@@ -1,4 +1,5 @@
 <odoo>
+
     <record id="action_student" model="ir.actions.act_window">
         <field name="name">Students</field>
         <field name="res_model">school.student</field>
@@ -67,4 +68,5 @@
             </list>
         </field>
     </record>
+
 </odoo>
