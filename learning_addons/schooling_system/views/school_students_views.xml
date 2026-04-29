@@ -1,0 +1,70 @@
+<odoo>
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <menuitem id="menu_student_list"
+              parent="menu_student"
+              action="action_student"/>
+
+    <record id="student_form" model="ir.ui.view">
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm"/>
+                    <button name="action_cancel" type="object" string="Cancel"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <notebook>
+
+                        <page string="Basic Info">
+                            <group>
+                                <field name="admission_no"/>
+                                <field name="admission_date"/>
+                                <field name="first_name"/>
+                                <field name="last_name"/>
+                                <field name="phone"/>
+                                <field name="class_id"/>
+
+                            </group>
+                        </page>
+
+                        <page string="Family">
+                            <group>
+                                <field name="father_name"/>
+                                <field name="mother_name"/>
+                            </group>
+                        </page>
+
+                        <page string="Remarks">
+                            <field name="remarks_ids">
+                                <list editable="bottom">
+                                    <field name="remark"/>
+                                    <field name="teacher_id"/>
+                                    <field name="date"/>
+                                </list>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="student_list" model="ir.ui.view">
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="admission_no"/>
+                <field name="name"/>
+                <field name="phone"/>
+            </list>
+        </field>
+    </record>
+</odoo>
