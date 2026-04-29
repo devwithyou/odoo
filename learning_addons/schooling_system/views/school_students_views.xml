@@ -6,14 +6,23 @@
         <field name="view_mode">list,form,kanban</field>
     </record>
 
-    <menuitem id="menu_student_list"
-              parent="menu_student"
-              action="action_student"/>
+    <menuitem id="menu_school_root"
+              name="School SPS"
+              sequence="1"/>
+
+    <menuitem id="menu_student"
+              name="Students"
+              parent="menu_school_root"
+              action="action_student"
+              sequence="2"/>
 
     <record id="student_form" model="ir.ui.view">
+        <field name="name">school.student.form</field>
         <field name="model">school.student</field>
         <field name="arch" type="xml">
+
             <form>
+
                 <header>
                     <button name="action_confirm" type="object" string="Confirm"/>
                     <button name="action_cancel" type="object" string="Cancel"/>
@@ -21,6 +30,7 @@
                 </header>
 
                 <sheet>
+
                     <notebook>
 
                         <page string="Basic Info">
@@ -31,7 +41,6 @@
                                 <field name="last_name"/>
                                 <field name="phone"/>
                                 <field name="class_id"/>
-
                             </group>
                         </page>
 
@@ -52,13 +61,26 @@
                             </field>
                         </page>
 
+                        <page string="Attendance">
+                            <field name="attendance_ids">
+                                <list editable="bottom">
+                                    <field name="date"/>
+                                    <field name="status"/>
+                                    <field name="teacher_id"/>
+                                </list>
+                            </field>
+                        </page>
+
                     </notebook>
+
                 </sheet>
             </form>
+
         </field>
     </record>
 
     <record id="student_list" model="ir.ui.view">
+        <field name="name">school.student.list</field>
         <field name="model">school.student</field>
         <field name="arch" type="xml">
             <list>

@@ -10,6 +10,7 @@
         'security/ir.model.access.csv',
         'views/school_erp_menu.xml',
         'views/school_students_views.xml',
+        "views/school_attendace_views.xml",
         'views/school_teacher_views.xml',
         'views/school_fees_vies.xml',
     ],

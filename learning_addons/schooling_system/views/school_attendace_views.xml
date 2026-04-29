@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="action_attendance" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">school.attendance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_attendance"
+              name="Attendance"
+              parent="menu_school_root"
+              action="action_attendance"
+              sequence="3"/>
+
+    <record id="attendance_form" model="ir.ui.view">
+        <field name="name">school.attendance.form</field>
+        <field name="model">school.attendance</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <sheet>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="date"/>
+                        <field name="status"/>
+                        <field name="teacher_id"/>
+                    </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="attendance_list" model="ir.ui.view">
+        <field name="name">school.attendance.list</field>
+        <field name="model">school.attendance</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_id"/>
+                <field name="date"/>
+                <field name="status"/>
+                <field name="teacher_id"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>

@@ -10,7 +10,10 @@ class SchoolStudent(models.Model):
     first_name = fields.Char(required=True)
     last_name = fields.Char(required=True)
 
-    name = fields.Char(compute="_compute_name", store=True)
+    name = fields.Char(
+        compute="_compute_name",
+        store=True
+    )
 
     email = fields.Char()
     phone = fields.Char(required=True)
@@ -18,7 +21,10 @@ class SchoolStudent(models.Model):
 
     country_id = fields.Many2one('res.country')
 
-    class_id = fields.Many2one('school.class', string="Class")
+    class_id = fields.Many2one(
+        'school.class',
+        string="Class"
+    )
 
     father_name = fields.Char()
     mother_name = fields.Char()
@@ -29,6 +35,17 @@ class SchoolStudent(models.Model):
         string="Remarks"
     )
 
+    attendance_ids = fields.One2many(
+        'school.attendance',
+        'student_id',
+        string="Attendance"
+    )
+
+    attendance_count = fields.Integer(
+        string="Attendance Count",
+        compute="_compute_attendance_count"
+    )
+
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirmed', 'Confirmed'),
@@ -36,16 +53,27 @@ class SchoolStudent(models.Model):
     ], default='draft')
 
     _sql_constraints = [
-        ('unique_admission_no', 'unique(admission_no)', 'Admission must be unique!')
+        (
+            'unique_admission_no',
+            'unique(admission_no)',
+            'Admission must be unique!'
+        )
     ]
 
     @api.depends('first_name', 'last_name')
     def _compute_name(self):
         for rec in self:
-            rec.name = f"{rec.first_name} {rec.last_name}"
+            rec.name = f"{rec.first_name or ''} {rec.last_name or ''}".strip()
+
+    @api.depends('attendance_ids')
+    def _compute_attendance_count(self):
+        for rec in self:
+            rec.attendance_count = len(rec.attendance_ids)
 
     def action_confirm(self):
-        self.state = 'confirmed'
+        for rec in self:
+            rec.state = 'confirmed'
 
     def action_cancel(self):
-        self.state = 'cancelled'
+        for rec in self:
+            rec.state = 'cancelled'
