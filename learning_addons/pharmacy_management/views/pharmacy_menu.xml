@@ -6,31 +6,31 @@
               name="Dashboard"
               parent="menu_pharmacy_root"
               action="action_pharmacy_dashboard_server"
-              sequence="0"/>
+              sequence="1"/>
 
     <menuitem id="menu_pharmacy_medicine"
               name="Medicines"
               parent="menu_pharmacy_root"
               action="action_pharmacy_medicine"
-              sequence="1"/>
+              sequence="2"/>
 
     <menuitem id="menu_pharmacy_batch"
               name="Batches"
               parent="menu_pharmacy_root"
               action="action_pharmacy_batch"
-              sequence="2"/>
+              sequence="3"/>
 
     <menuitem id="menu_pharmacy_customer"
               name="Customers"
               parent="menu_pharmacy_root"
               action="action_pharmacy_customer"
-              sequence="3"/>
+              sequence="4"/>
 
     <menuitem id="menu_pharmacy_sale"
               name="Sales"
               parent="menu_pharmacy_root"
               action="action_pharmacy_sale"
-              sequence="4"/>
+              sequence="5"/>
 
 </odoo>
 

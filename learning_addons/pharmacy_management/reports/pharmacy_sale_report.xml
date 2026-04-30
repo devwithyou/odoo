@@ -1,6 +1,5 @@
 <odoo>
 
-    <!-- ✅ REPORT TEMPLATE -->
     <template id="report_sale_receipt">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
@@ -40,7 +39,6 @@
         </t>
     </template>
 
-    <!-- ✅ REPORT ACTION -->
     <record id="action_sale_receipt" model="ir.actions.report">
         <field name="name">Sale Receipt</field>
         <field name="model">pharmacy.sale</field>
