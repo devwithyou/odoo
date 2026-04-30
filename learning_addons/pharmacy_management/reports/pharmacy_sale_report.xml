@@ -1,0 +1,52 @@
+<odoo>
+
+    <!-- ✅ REPORT TEMPLATE -->
+    <template id="report_sale_receipt">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+
+                    <h2>Pharmacy Receipt</h2>
+
+                    <p><strong>Sale:</strong> <t t-esc="doc.name"/></p>
+                    <p><strong>Date:</strong> <t t-esc="doc.date"/></p>
+                    <p><strong>Customer:</strong> <t t-esc="doc.customer_id.name"/></p>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Medicine</th>
+                                <th>Batch</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.line_ids" t-as="line">
+                                <td><t t-esc="line.medicine_id.name"/></td>
+                                <td><t t-esc="line.batch_id.batch_no"/></td>
+                                <td><t t-esc="line.qty"/></td>
+                                <td><t t-esc="line.price_unit"/></td>
+                                <td><t t-esc="line.subtotal"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Total: <t t-esc="doc.total_amount"/></h3>
+
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- ✅ REPORT ACTION -->
+    <record id="action_sale_receipt" model="ir.actions.report">
+        <field name="name">Sale Receipt</field>
+        <field name="model">pharmacy.sale</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pharmacy_management.report_sale_receipt</field>
+        <field name="report_file">pharmacy_management.report_sale_receipt</field>
+    </record>
+
+</odoo>
