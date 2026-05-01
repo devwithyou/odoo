@@ -1,5 +1,5 @@
 {
-    "name": "Pharmacy Management",
+    "name": "PHIL-PHARMA",
     "author": "Muhammad Salaar",
     "version": "1.0",
     "depends": ["base"],
@@ -7,6 +7,7 @@
     "installable": True,
     "data": [
         "security/ir.model.access.csv",
+        "data/dashboard_data.xml",
         "views/pharmacy_dashboard_views.xml",
         "views/pharmacy_medicine_views.xml",
         "views/pharmacy_customer_views.xml",

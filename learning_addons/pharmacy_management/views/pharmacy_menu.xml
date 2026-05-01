@@ -1,11 +1,11 @@
 <odoo>
 
-    <menuitem id="menu_pharmacy_root" name="Pharmacy" sequence="1"/>
+    <menuitem id="menu_pharmacy_root" name="PHIL-PHARMA" sequence="1"/>
 
     <menuitem id="menu_pharmacy_dashboard"
               name="Dashboard"
               parent="menu_pharmacy_root"
-              action="action_pharmacy_dashboard_server"
+              action="action_pharmacy_dashboard"
               sequence="1"/>
 
     <menuitem id="menu_pharmacy_medicine"
@@ -33,4 +33,3 @@
               sequence="5"/>
 
 </odoo>
-

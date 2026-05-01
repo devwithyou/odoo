@@ -7,7 +7,7 @@
             <form string="Dashboard">
                 <sheet>
 
-                    <h1>Pharmacy Dashboard</h1>
+                    <h1>PHIL-PHARMA Dashboard</h1>
 
                     <group col="4">
 
@@ -34,13 +34,11 @@
         </field>
     </record>
 
-    <record id="action_pharmacy_dashboard_server" model="ir.actions.server">
+    <record id="action_pharmacy_dashboard" model="ir.actions.act_window">
         <field name="name">Dashboard</field>
-        <field name="model_id" ref="model_pharmacy_dashboard"/>
-        <field name="state">code</field>
-        <field name="code">
-action = env['pharmacy.dashboard'].open_dashboard()
-        </field>
+        <field name="res_model">pharmacy.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
     </record>
 
 </odoo>
