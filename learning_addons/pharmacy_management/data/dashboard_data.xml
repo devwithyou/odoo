@@ -1,0 +1,7 @@
+<odoo>
+
+    <record id="pharmacy_dashboard_record" model="pharmacy.dashboard">
+        <field name="name">Dashboard</field>
+    </record>
+
+</odoo>
